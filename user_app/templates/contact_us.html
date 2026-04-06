@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="/static/css/contact.css">
+
+    <!-- Theme Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='icomoon/icomoon.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/vendor.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arapey&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header class="header">
+        <a href="/" class="fas fa-home">Home</a>
+        <h1>Contact Us</h1>
+        <p>For Leaf Village Inquiries</p>
+    </header>
+
+    <section class="info">
+        <div class="info-block">
+            <h2>Hours of Operation</h2>
+            <p>9:00 to 17:00, Mon-Fri (Excluding Holidays)</p>
+        </div>
+        <div class="info-block">
+            <h2>Phone</h2>
+            <p>+91 9427802388</p>
+        </div>
+        <div class="info-block">
+            <h2>General Inquiries</h2>
+            <p><a href="mailto:leafvillageinfo@gmail.com">leafvillageinfo@gmail.com</a></p>
+        </div>
+    </section>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+
+    <section class="contact-form">
+        <h2>Contact Form</h2>
+        <p>Please fill out all fields</p>
+        <form action="/contact" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Send</button>
+        </form>
+    </section>
+</body>
+</html>

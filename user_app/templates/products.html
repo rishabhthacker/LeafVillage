@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Leaf Village</title>
+    <!-- Theme Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='icomoon/icomoon.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/vendor.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arapey&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arapey', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F6F7F2; /* Match the homepage background */
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        a:hover {
+            color: #2b7a78; /* Optional hover color */
+        }
+
+        /* Header */
+        .header {
+            background: #588456;
+            padding: 15px 20px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .home-button {
+            text-decoration: none;
+            background-color: #2d9c26;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .home-button:hover {
+            background-color: #ffffff;
+        }
+
+        /* Sort Dropdown */
+        .sort-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .sort-container select {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #2b7a78;
+            border-radius: 8px;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #f7f7f7;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-card h3 {
+            margin: 15px 0;
+            font-family: 'Arapey', serif;
+            font-size: 1.5rem;
+            color: #2b7a78;
+        }
+
+        .product-card p {
+            margin: 10px 0;
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .product-card .price {
+            font-weight: bold;
+            color: #D35400;
+        }
+
+        .header .fa-home{
+            font-size: 24px;
+            gap: 20px;
+        }
+        .header .icon-account{
+            font-size: 24px;
+            gap: 20px;
+        }
+        .header .fa-arrow-left {
+            font-size: 24px; 
+            gap: 20px;
+        }
+
+        .fa-home, .icon-account, .fa-arrow-left {
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <header>
+            <div class="header">
+                <div class="nav-links">
+                    <!-- Back/Previous Link -->
+                    <a href="javascript:history.back()">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous
+                    </a>
+        
+                    <!-- Home Link -->
+                    <a href="/">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                </div>
+        
+                <!-- Cart Link -->
+                <a href="/cart">
+                    <i class="icon icon-account"></i>
+                    Cart
+                </a>
+            </div>
+        </header>
+        <h1>Our Products</h1>
+    </div>
+
+    <!-- Sort Dropdown -->
+    <div class="sort-container">
+        <form method="GET" action="{{ url_for('view_products_by_category', category=category, subcategory=subcategory) }}">
+            <label for="sort_by">Sort By:</label>
+            <select name="sort_by" id="sort_by" onchange="this.form.submit()">
+                <option value="default" {% if sort_by == 'default' %}selected{% endif %}>Default</option>
+                <option value="price_high_to_low" {% if sort_by == 'price_high_to_low' %}selected{% endif %}>Price: High to Low</option>
+                <option value="price_low_to_high" {% if sort_by == 'price_low_to_high' %}selected{% endif %}>Price: Low to High</option>
+                <option value="name_a_to_z" {% if sort_by == 'name_a_to_z' %}selected{% endif %}>Name: A-Z</option>
+                <option value="name_z_to_a" {% if sort_by == 'name_z_to_a' %}selected{% endif %}>Name: Z-A</option>
+            </select>
+        </form>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="product-grid">
+        {% for product in products %}
+        <div class="product-card">
+            <a href="{{ url_for('product_details', product_id=product.product_id) }}">
+                <img src="{{ product.image_url }}" alt="{{ product.product_name }}">
+                <h3>{{ product.product_name }}</h3>
+                <p>{{ product.description }}</p>
+                <p class="price">₹{{ product.price }}</p>
+                <p>In Stock: {{ product.stock_quantity }}</p>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

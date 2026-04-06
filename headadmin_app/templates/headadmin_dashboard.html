@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Headadmin Dashboard</title>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        .dashboard-container {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .dashboard-container h2 {
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .dashboard-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .dashboard-actions .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            width: 300px;
+        }
+
+        .dashboard-actions .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .dashboard-actions .card h3 {
+            margin-bottom: 1rem;
+            color: #74ebd5;
+        }
+
+        .dashboard-actions .card p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .dashboard-actions .card a {
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(120deg, #74ebd5, #ACB6E5);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class="headadmin">
+    <div class="dashboard-container">
+        <h2>Welcome to the Headadmin Dashboard</h2>
+        <div class="dashboard-actions">
+            <div class="card">
+                <h3>Manage Users</h3>
+                <p>View, edit, or delete user accounts.</p>
+                <a href="/headadmin/users">Go to Users</a>
+            </div>
+            <div class="card">
+                <h3>Manage Subadmins</h3>
+                <p>View, add, or remove subadmins.</p>
+                <a href="/headadmin/subadmins">Go to Subadmins</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

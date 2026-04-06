@@ -1,0 +1,99 @@
+/* General Reset */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background: #f5f5f5;
+    text-align: center;
+    padding: 2rem 1rem;
+    border-bottom: 2px solid #ddd;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+header p {
+    color: #777;
+    margin: 0.5rem 0 0;
+}
+
+.info {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem 1rem;
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+}
+
+.info-block {
+    text-align: center;
+    max-width: 200px;
+}
+
+.info-block h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #444;
+}
+
+.info-block p {
+    margin: 0;
+    color: #777;
+}
+
+.contact-form {
+    padding: 2rem 1rem;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+.contact-form h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact-form p {
+    color: #777;
+    margin-bottom: 1.5rem;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+form button:hover {
+    background: #555;
+}

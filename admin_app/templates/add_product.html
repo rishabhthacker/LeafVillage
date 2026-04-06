@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Add New Product</h1>
+        <form method="POST" action="{{ url_for('add_product') }}"> 
+            <label for="product_name">Product Name:</label>
+            <input type="text" id="product_name" name="product_name" required>
+        
+            <label for="image_url">Image URL:</label>
+            <input type="text" id="image_url" name="image_url" required>
+        
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="0.01" required>
+        
+            <label for="stock_quantity">Stock:</label>
+            <input type="number" id="stock_quantity" name="stock_quantity" required>            
+        
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea>
+        
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="" disabled selected>Select a Category</option>
+                <option value="Plants">Plants</option>
+                <option value="Care">Care</option>
+                <option value="Eco-Friendly">Eco-Friendly</option>
+            </select>
+        
+            <label for="subcategory">Subcategory:</label>
+            <select id="subcategory" name="subcategory" required>
+                <option value="" disabled selected>Select a Subcategory</option>
+                <!-- Subcategories for Plants -->
+                <optgroup label="Plants">
+                    <option value="Indoor">Indoor</option>
+                    <option value="Outdoor">Outdoor</option>
+                    <option value="Hanging">Hanging</option>
+                    <option value="Flowering">Flowering</option>
+                </optgroup>
+                <!-- Subcategories for Care -->
+                <optgroup label="Care">
+                    <option value="Garden Tools">Garden Tools</option>
+                    <option value="Fertilizers">Fertilizers</option>
+                    <option value="Decoration">Decoration</option>
+                    <option value="Seeds">Seeds</option>
+                </optgroup>
+                <!-- Subcategories for Eco-Friendly -->
+                <optgroup label="Eco-Friendly">
+                    <option value="Biodegradable Pots">Biodegradable Pots</option>
+                    <option value="Rain Barrels">Rain Barrels</option>
+                    <option value="Garden Lights">Garden Lights</option>
+                </optgroup>
+            </select>
+        
+            <label for="steps_to_grow">Steps to Grow:</label>
+            <textarea id="steps_to_grow" name="steps_to_grow" required></textarea>
+        
+            <button type="submit">Add Product</button>
+        </form>
+        
+    </div>
+</body>
+</html>

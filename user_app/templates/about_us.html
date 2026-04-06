@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-nogqaZLGO8Bz7MI+NdTnruevyyEwWCL0hbKScAAgYrSAdmd/b39jU1qxa+5D0aDf" crossorigin="anonymous">
+  
+  <!-- Theme Stylesheets -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='icomoon/icomoon.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/vendor.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Arapey&display=swap" rel="stylesheet">
+  
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #F6F7F2;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #588456;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 24px;
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 16px;
+      margin: 10px 0;
+      text-align: justify;
+    }
+
+    /* Header Section */
+    .header {
+      text-align: center;
+      padding: 30px;
+      background-color: #588456;
+      color: #F6F7F2;
+    }
+
+    .header .home-button {
+      display: inline-block;
+      background-color: #F6F7F2;
+      color: #588456;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+    }
+
+    .header .home-button:hover {
+      background-color: #F6F7F2;
+    }
+
+    .header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    /* Section Styles */
+    section {
+      padding: 30px;
+      margin: 20px auto;
+      background: #F6F7F2;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 1000px;
+    }
+
+    section h2 {
+      margin-top: 0;
+    }
+
+    blockquote {
+      font-size: 20px;
+      font-style: italic;
+      margin: 20px 0;
+      color: #588456;
+      text-align: center;
+    }
+
+    /* Team Section */
+    .team {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 20px;
+    }
+
+    .team-leader {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #F6F7F2;
+      border: 1px solid #F6F7F2;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 300px; /* Optional, for uniform size */
+      margin: 0 auto; /* Center the entire container */
+      text-align: center; /* Align text to the center */
+    }
+
+
+    .team-member, .team-leader {
+      background: #F6F7F2;
+      border: 1px solid #F6F7F2;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      max-width: 220px;
+      flex: 1;
+    }
+
+    .team-member img, .team-leader img {
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      margin-bottom: 10px;
+      border: 3px solid #588456;
+    }
+
+    .team-member h3, .team-leader h3 {
+      font-size: 18px;
+      color: #588456;
+      margin-bottom: 5px;
+    }
+
+    .team-member p {
+      text-align: center;
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #588456;
+      color: #F6F7F2;
+      margin-top: 20px;
+    }
+
+    .footer a {
+      color: #F6F7F2;
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      section {
+        padding: 20px;
+        margin: 10px;
+      }
+
+      .team {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .team-member, .team-leader {
+        max-width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="about-us-page">
+    <!-- Header -->
+    <header class="header">
+      <a href="/" class="home-button"><i class="fas fa-home"></i> Home</a>
+      <h1>About Us</h1>
+    </header>
+
+    <!-- About Us Section -->
+    <section>
+      <h2>Our Journey</h2>
+      <p>Could it be any more ambitious? It all started with one simple thought: ‘Let’s bring nature into people’s homes—even if their track record with plants is basically plant-icide.’ What began as a deep-rooted passion for plants and a mild obsession with keeping them alive has somehow spiraled into a full-blown mission to greenify the world—one slightly panicked, overwatering customer at a time.</p>
+
+      <h2>The Seed of an Idea</h2>
+      <p>In 2024, we had a huge realization—people were so busy scrolling through their phones, they forgot trees even existed. So, we took action. We created a space where plant lovers (and those who just want to seem like plant lovers) could find not just plants, but also a crash course on how not to kill them. You know, unlike Toby, who just sucks the life out of everything—including plants. I gave him a succulent once… it died out of boredom.</p>
+
+      <h2>Growing Together</h2>
+      <p>We started small—like, really small. Like, ‘Is this a leaf or did I drop my lunch?’ small. But after a few sleepless nights, a couple of plants that, uh… let’s just say moved on to a better place, and a whole lot of trial and error, we built a collection of plants and gardening tools that are basically Phil-proof. Which means you probably can’t screw them up either… hopefully. No guarantees if you’re a Dunphy, though.</p>
+
+      <h2>Blossoming into a Community</h2>
+      <p>As we grew, so did our community of plant enthusiasts—some thriving, some… well, let’s just say their plants entered witness protection. We’ve seen it all—from ‘I’ve never bought a plant in my life’ to ‘I talk to my plants more than actual humans.’ And yeah, we’ve helped them all. We’ve also learned a thing or two along the way—like how Boyle once tried to marinate his basil plant because he thought it would ‘infuse the flavor from the inside.’ Yeah… don’t be a Boyle. But together, we’ve built a space where creativity and sustainability meet… and hopefully, you won’t commit plant-icide.</p>
+    </section>
+
+    <!-- Team Leader Section -->
+    <section>
+      <h2>Meet Our Visionary Leader</h2>
+      <div class="team-leader">
+        <img src="https://i.pinimg.com/236x/91/4c/e0/914ce063d237e1c2e28470d0fab593a0.jpg" alt="Team Leader">
+        <h3>Rudra Barot</h3>
+        <p><b>Fullstacker</b></p>
+        <p><i>"Most of the boys didn't like me here, but their girlfriends did..."</i></p>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section>
+      <h2>The Best of Professionals</h2>
+      <div class="team">
+        <div class="team-member">
+          <img src="https://i.pinimg.com/474x/4d/89/88/4d8988e81cffb70fd2da880638d507d6.jpg" alt="Team Member">
+          <h3>Rudra Dobariya</h3>
+          <p><b>Backend Developer</b></p>
+          <p><i>"Great things come from hardwork and perseverance. No excuses."</i></p>
+        </div>
+        <div class="team-member">
+          <img src="https://i.pinimg.com/474x/0c/e1/33/0ce133f5fc8c067a972823e18fdde6e7.jpg" alt="Team Member">
+          <h3>Priyanshu Kachiya</h3>
+          <p><b>Documentation Engineer</b></p>
+          <p><i>"Success is a series of small wins."</i></p>
+        </div>
+        <div class="team-member">
+          <img src="https://i.pinimg.com/474x/b4/d6/b9/b4d6b91465a7c247d07cc2ca3f49929e.jpg" alt="Team Member">
+          <h3>Rushi Pradhan</h3>
+          <p><b>Frontend Developer</b></p>
+          <p><i>"I failed at love but pulled every girl I wanted."</i></p>
+        </div>
+        <div class="team-member">
+          <img src="https://i.pinimg.com/474x/1c/9d/e0/1c9de0570165a5a92372ce94b2e1e402.jpg" alt="Team Member">
+          <h3>Rudra Thakkar</h3>
+          <p><b>Graphic Designer</b></p>
+          <p><i>"The roof is not my son but I will raise it."</i></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section>
+      <h2>Our Mission</h2>
+      <blockquote>"Let’s make the world greener, one plant at a time... because, clearly, the planet needs more of us trying to keep plants alive."</blockquote>
+      <p>YO CHAT! Leaf Village goin’ CRAZY right now! We all about that greenery, you feel me? Our mission? Turn your space into a vibe, boost your mood (or at least distract you from the Ls of life), and save the planet one plant at a time. Lowkey, we’re like the fairy godmothers of plant life… but with more drip.</p>
+      <p>This started as a tiny, probably delusional dream, and now? We GLOBAL. We got the finest plants (that hopefully won’t die on you), advice that won’t have you feelin’ like you in a college lecture, and we deliver straight to your door like the plant plug you never knew you needed.</p>
+      <p>Whether you’re a plant expert or you just Googled ‘Why my succulent lookin’ sad,’ we gotchu. Eco-friendly, stress-free, and backed by a whole community of plant lovers who probably know more than you. But it’s all love—WE IN THIS TOGETHER!</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 Leaf Village | <a href="#">Privacy Policy</a></p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom right, #f3f4f6, #e3efff);
+    color: #333;
+    line-height: 1.6;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #222;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Page */
+.contact-page .contact-form {
+    margin-top: 1rem;
+}
+
+.contact-page .form-group {
+    margin-bottom: 1rem;
+}
+
+.contact-page label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.contact-page input,
+.contact-page textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.contact-page input:focus,
+.contact-page textarea:focus {
+    border-color: #38b6ff;
+}
+
+.contact-page .btn {
+    background: linear-gradient(120deg, #38b6ff, #66d9ff);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.contact-page .btn:hover {
+    background: linear-gradient(120deg, #1e90ff, #4ecdc4);
+}
+
+/* About Page */
+.about-page .about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.about-page .about-img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 50%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.about-page .about-text {
+    text-align: center;
+    color: #555;
+}
+
+.about-page .about-text strong {
+    color: #222;
+}

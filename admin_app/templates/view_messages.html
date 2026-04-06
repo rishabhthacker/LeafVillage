@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sub-Admin - Messages</title>
+    <link rel="stylesheet" href="/static/css/sam.css">
+</head>
+<body>
+    <header>
+        <h1>Messages</h1><br>   
+        <a href="/subadmin/dashboard" class="btn">Back to Dashboard</a>
+    </header>
+
+    {% if messages %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Received At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for msg in messages %}
+            <tr>
+                <td>{{ msg.message_id }}</td>
+                <td>{{ msg.user_name }}</td>
+                <td>{{ msg.user_email }}</td>
+                <td>{{ msg.user_message }}</td>
+                <td>{{ msg.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No messages found.</p>
+    {% endif %}
+</body>
+</html>

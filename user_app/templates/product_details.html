@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.product_name }}</title>
+
+    <!-- Theme Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='icomoon/icomoon.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/vendor.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arapey&display=swap" rel="stylesheet">
+    
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F6F7F2; /* Matches homepage background */
+            position: relative;
+            color: #333;
+        }
+
+        /* Links without underline */
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        a:hover {
+            color: #ccc;
+        }
+
+        /* Header */
+        .header {
+            background-color: #588456;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+
+        /* Product Card */
+        .product-details {
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            margin: 50px auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            margin: auto;
+        }
+
+        .product-info {
+            padding: 30px;
+            flex: 1;
+        }
+
+        .product-info h1 {
+            font-size: 28px;
+            margin: 0;
+            color: #333;
+        }
+
+        .product-info p {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .product-info .price {
+            font-size: 22px;
+            color: #007b5e;
+            font-weight: bold;
+        }
+
+        /* Actions Section */
+        .product-actions {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .buy-now {
+            background-color: #588456;
+        }
+
+        .add-to-cart {
+            background-color: #588456;
+        }
+
+        .buy-now:hover {
+            background-color: #abf077;
+        }
+
+        .add-to-cart:hover {
+            background-color: #abf077;
+        }
+
+        /* Quantity Input */
+        .quantity-input {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .quantity-input input {
+            width: 60px;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .header .fa-home{
+            font-size: 24px;
+            gap: 20px;
+        }
+        .header .icon-account{
+            font-size: 24px;
+            gap: 20px;
+        }
+        .header .fa-arrow-left {
+            font-size: 24px; 
+            gap: 20px;
+        }
+
+        .fa-home, .icon-account, .fa-arrow-left {
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header">
+            <div class="nav-links">
+                <!-- Back/Previous Link -->
+                <a href="javascript:history.back()">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous
+                </a>
+    
+                <!-- Home Link -->
+                <a href="/">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+            </div>
+    
+            <!-- Cart Link -->
+            <a href="/cart">
+                <i class="icon icon-account"></i>
+                Cart
+            </a>
+        </div>
+    </header>
+
+    <!-- Product Details -->
+    <div class="product-details">
+        <img src="{{ product.image_url }}" alt="{{ product.product_name }}" class="product-image">
+        <div class="product-info">
+            <h1>{{ product.product_name }}</h1>
+            <p><strong>Description: </strong>{{ product.description }}</p>
+            <p><strong>Steps to Grow: </strong>{{ product.steps_to_grow }}</p>
+            <p class="price">Price: ₹{{ product.price }}</p>
+            <p>Stock: {{ product.stock_quantity }}</p>
+            <div class="product-actions">
+                <form id="add-to-cart-form" method="post" action="/add_to_cart" style="display: flex; align-items: center; gap: 10px;">
+                    <div class="quantity-input">
+                        <label for="quantity">Qty:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="{{ product.stock_quantity }}" value="1">
+                    </div>
+                    <input type="hidden" name="product_id" value="{{ product.product_id }}">
+                    <button type="submit" class="btn add-to-cart">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("add-to-cart-form").addEventListener("submit", async function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+
+            const response = await fetch("/add_to_cart", {
+                method: "POST",
+                body: formData,
+            });
+
+            const result = await response.json();
+            alert(result.message);
+            if (result.status === "success") {
+                location.reload();
+            }
+        });
+    </script>
+</body>
+</html>

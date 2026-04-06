@@ -1,0 +1,184 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5dc;
+    color: #333;
+  }
+  
+  .about-us-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1, h2 {
+    text-align: center;
+    color: #4b5320;
+  }
+  
+  p {
+    line-height: 1.6;
+    margin: 15px 0;
+    text-align: justify;
+  }
+  
+  blockquote {
+    font-size: 1.5em;
+    font-style: italic;
+    text-align: center;
+    margin: 20px auto;
+    color: #4b5320;
+    border-left: 4px solid #ccc;
+    padding-left: 20px;
+  }
+  
+  /* Header Section */
+  .header {
+    background: url('') no-repeat center/cover;
+    padding: 50px 20px;
+    text-align: center;
+    color: white;
+  }
+  
+  .header h1 {
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 3em;
+    margin: 0;
+  }
+  
+  .header p {
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 1.2em;
+    margin-top: 10px;
+    color: rgb(43, 47, 41);
+  }
+  
+  /* Team Section */
+  .team-section {
+    margin: 50px 0;
+  }
+  
+  .team {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .team-member {
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .team-member img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .team-member h3 {
+    margin: 10px 0;
+    color: #4b5320;
+  }
+  
+  .team-member p {
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 1em;
+    color: #666;
+  }
+  
+  /* Story Section */
+  .story-section {
+    font-family: 'Century Gothic', sans-serif;
+    background: #eff5e8;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .story-section h2 {
+    margin-bottom: 20px;
+  }
+  
+  /* Footer Section */
+  .footer {
+    text-align: center;
+    margin: 30px 0;
+    font-size: 0.9em;
+  }
+  
+  .footer a {
+    color: #4b5320;
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* Team Leader Section */
+.team-leader-section {
+    margin: 50px 0;
+    text-align: center;
+  }
+  
+  .team-leader {
+    display: inline-block;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+  }
+  
+  .team-leader img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .team-leader h3 {
+    margin: 15px 0 5px;
+    color: #4b5320;
+  }
+  
+  .team-leader p {
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 1em;
+    color: #666;
+  }
+  
+  .team-leader p:first-of-type {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+  }
+  
+  /* Home Button */
+.home-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: #ffdd57;
+  color: #333;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+  background-color: #f4c10f;
+  color: #000;
+}

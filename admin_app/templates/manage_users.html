@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Manage Users</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.username.label }}
+        {{ form.username }}
+    </div>
+    <div>
+        {{ form.email.label }}
+        {{ form.email }}
+    </div>
+    <div>
+        {{ form.role.label }}
+        {{ form.role }}
+    </div>
+    <button type="submit">Save</button>
+</form>
+<h3>Existing Users</h3>
+<ul>
+    {% for user in users %}
+        <li>{{ user.username }} - {{ user.email }} ({{ user.role }})</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-nogqaZLGO8Bz7MI+NdTnruevyyEwWCL0hbKScAAgYrSAdmd/b39jU1qxa+5D0aDf" crossorigin="anonymous">
+    
+    <!-- Theme Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='icomoon/icomoon.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/vendor.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arapey&display=swap" rel="stylesheet">
+    
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F6F7F2;
+            color: #333;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #588456;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 18px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #588456;
+            color: #fff;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        header .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        header a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            background-color: #588456;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        header a:hover {
+            background-color: #588456;
+        }
+
+        .fa-home, .icon-account, .fa-arrow-left {
+            margin-left: 8px;
+        }
+
+        /* Cart Table */
+        table {
+            width: 90%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: #588456;
+            color: white;
+        }
+
+        thead th {
+            padding: 15px;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        tbody td {
+            padding: 15px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #edf7ed;
+            transform: scale(1.01);
+            transition: 0.3s ease-in-out;
+        }
+
+        tbody td img {
+            margin-right: 10px;
+            vertical-align: middle;
+            border-radius: 5px;
+        }
+
+        tbody td a {
+            text-decoration: none;
+            color: #588456;
+            font-weight: bold;
+        }
+
+        tbody td a:hover {
+            color: #588456;
+        }
+
+        /* Button Styles */
+        button {
+            padding: 10px 15px;
+            background-color: #588456;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #588456;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        /* Proceed to Checkout Button */
+
+        button.proceed-btn {
+            display: block;          /* Makes the button block-level */
+            width: 250px;            /* Fixed width for consistent size */
+            margin: 30px auto;       /* Centers the button horizontally */
+            padding: 12px 20px;      /* Adjust padding for better aesthetics */
+            font-size: 16px;         /* Slightly larger font for emphasis */
+            font-weight: bold;       /* Bold font for importance */
+            background-color: #588456; /* Matches the theme color */
+            color: white;            /* White text for contrast */
+            border: none;            /* Removes default button borders */
+            border-radius: 8px;      /* Rounded corners for a softer look */
+            cursor: pointer;         /* Pointer cursor to indicate clickability */
+            text-align: center;      /* Centers text inside the button */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+        }
+
+        button.proceed-btn:hover {
+            background-color: #4a713c; /* Slightly darker green on hover */
+        }
+
+        button.proceed-btn:active {
+            transform: scale(0.98); /* Subtle click effect */
+        }
+
+        .proceed-btn {
+            display: flex;          /* Use flexbox for alignment */
+            justify-content: center; /* Center horizontally */
+            margin-top: 30px;       /* Add spacing from the table */
+        }
+
+        /* Empty Cart Message */
+        p {
+            margin-top: 30px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+            }
+
+            tbody td img {
+                width: 40px;
+            }
+
+            tbody td {
+                padding: 10px;
+            }
+
+            button {
+                padding: 8px 10px;
+            }
+        }
+
+        .header .fa-home{
+            font-size: 24px;
+            gap: 20px;
+        }
+        .header .icon-account{
+            font-size: 24px;
+            gap: 20px;
+        }
+        .header .fa-arrow-left {
+            font-size: 24px; 
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>My Cart</h1>
+        <div class="nav-links">
+            <!-- Previous Page -->
+            <a href="javascript:history.back()">
+                <i class="fas fa-arrow-left"></i> Previous
+            </a>
+
+            <!-- Home -->
+            <a href="/">
+                <i class="fas fa-home"></i> Home
+            </a>
+        </div>
+    </header>
+
+    <!-- Cart Section -->
+    <h1>Your Cart</h1>
+    {% if cart %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart %}
+                <tr>
+                    <td>
+                        <img src="{{ item.image_url }}" alt="{{ item.product_name }}" width="50">
+                        <a href="/product/{{ item.product_id }}">{{ item.product_name }}</a>
+                    </td>
+                    <td>{{ item.quantity }}</td>
+                    <td>₹{{ item.price }}</td>
+                    <td>₹{{ item.total_price }}</td>
+                    <td>
+                        <form method="post" action="/remove_from_cart/{{ item.product_id }}">
+                            <button type="submit">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Total: ₹{{ total }}</h2>
+        <div class="proceed-btn">
+            <form action="/payment" method="GET">
+                <input type="hidden" name="total" value="{{ total }}">
+                <button type="submit" class="checkout-button">Proceed to Checkout</button>
+            </form>                        
+        </div>
+    {% else %}
+        <p>Your cart is empty!</p>
+    {% endif %}
+
+    <script>
+        function proceedToCheckout() {
+            window.location.href = "/payment";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-nogqaZLGO8Bz7MI+NdTnruevyyEwWCL0hbKScAAgYrSAdmd/b39jU1qxa+5D0aDf" crossorigin="anonymous">
+    
+    <!-- Theme Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='icomoon/icomoon.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/vendor.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arapey&display=swap" rel="stylesheet">
+    
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F6F7F2;
+            color: #333;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #588456;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #588456;
+            color: white;
+        }
+
+        header a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            background-color: #588456;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        header a:hover {
+            background-color: #588456;
+        }
+
+        .fa-home {
+            margin-right: 8px;
+        }
+
+        .profile-picture img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            width: 90%;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-section form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .profile-section label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #588456;
+        }
+
+        .profile-section input[type="text"], 
+        .profile-section select, 
+        .profile-section input[type="file"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .profile-section input[type="file"] {
+            border: none;
+        }
+
+        .profile-section button {
+            padding: 10px 15px;
+            background-color: #588456;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .profile-section button:hover {
+            background-color: #588456;
+        }
+
+        .profile-section button:active {
+            transform: scale(0.95);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .profile-section {
+                width: 100%;
+                padding: 15px;
+            }
+
+            .profile-picture img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="/">
+            <i class="fas fa-home"></i> Home
+        </a>
+        <div class="profile-picture">
+            {% if user.profile_picture %}
+                <img src="/static/uploads/profile_pictures/scott.jpg" alt="Example Image">
+            {% else %}
+                <img src="{{ url_for('static', filename='uploads/default_profile.png') }}" alt="Default Profile Picture">
+            {% endif %}
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <h1>My Account</h1>
+    <div class="profile-section">
+        <h2>Profile Details</h2>
+        <form method="POST" enctype="multipart/form-data">
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" value="{{ user.first_name or '' }}">
+        
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" value="{{ user.last_name or '' }}">
+        
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" value="{{ user.phone or '' }}">
+        
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="Male" {% if user.gender == 'Male' %}selected{% endif %}>Male</option>
+                <option value="Female" {% if user.gender == 'Female' %}selected{% endif %}>Female</option>
+            </select>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="3" cols="40">{{ user.address }}</textarea>
+        
+            <label for="profile_picture">Profile Picture:</label>
+            <input type="file" id="profile_picture" name="profile_picture">
+            
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+	<head>
+		<title>Leaf Village</title>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="format-detection" content="telephone=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="author" content="templatesjungle">
+	    <meta name="keywords" content="plant shop">
+	    <meta name="description" content="Free Plant Selling Website Template">
+
+	    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	    <link rel="stylesheet" href="{{ url_for('static', filename='icomoon/icomoon.css') }}">
+	    <link rel="stylesheet" href="{{ url_for('static', filename='css/vendor.css') }}">
+
+	    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+	    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	    <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Arapey&display=swap" rel="stylesheet">
+	</head>
+
+<body>
+
+<header id="header" class="fixed">
+	<div id="header-wrap">
+		<div class="main-logo">
+			<a href="/"><img src="static/images/flogo.jpg" alt="logo"></a>
+		</div>
+
+		<nav id="navbar">
+			<div class="main-menu" id="navigation">
+				<ul class="menu-list navbar-nav">
+					<li class="menu-item"><a href="/" data-effect="Home" class="nav-link">Home</a></li>
+					<li class="menu-item">
+						<a href="#latest-blog" data-effect="latest-blog" class="nav-link">Blog</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a href="#" data-bs-toggle="dropdown" aria-expanded="false"
+							class="nav-link dropdown-toggle">Plants</a>
+						<ul class="dropdown-menu">
+							<li><a href="{{ url_for('view_products_by_category', category='Plants', subcategory='Indoor') }}">IndoorPlants</a></li>
+							<li><a href="{{ url_for('view_products_by_category', category='Plants', subcategory='Outdoor') }}">OutdoorPlants</a></li>
+							<li><a href="{{ url_for('view_products_by_category', category='Plants', subcategory='Hanging') }}">HangingPlants</a></li>
+							<li><a href="{{ url_for('view_products_by_category', category='Plants', subcategory='Flowering') }}">FloweringPlants</a></li>
+						</ul>
+					</li>
+					<li class="nav-item dropdown">
+						<a href="#" data-bs-toggle="dropdown" aria-expanded="false"
+							class="nav-link dropdown-toggle">Care</a>
+						<ul class="dropdown-menu">
+							<a href="{{ url_for('view_products_by_category', category='Care', subcategory='Garden Tools') }}">GardenTools</a>
+                    		<a href="{{ url_for('view_products_by_category', category='Care', subcategory='Fertilizers') }}">Fertilizers</a>
+                    		<a href="{{ url_for('view_products_by_category', category='Care', subcategory='Decoration') }}">Decoration</a>
+                    		<a href="{{ url_for('view_products_by_category', category='Care', subcategory='Seeds') }}">Seeds</a>
+						</ul>
+					</li>
+					<li class="nav-item dropdown">
+						<a href="#" data-bs-toggle="dropdown" aria-expanded="false"
+							class="nav-link dropdown-toggle">Eco-Friendly</a>
+						<ul class="dropdown-menu">
+							<a href="{{ url_for('view_products_by_category', category='Eco-Friendly', subcategory='Biodegradable Pots') }}">BiodegradablePots</a>
+                    		<a href="{{ url_for('view_products_by_category', category='Eco-Friendly', subcategory='Rain Barrels') }}">RainBarrels</a>
+                    		<a href="{{ url_for('view_products_by_category', category='Eco-Friendly', subcategory='Garden Lights') }}">GardenLights</a>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+			<div class="right-element icon-element">
+				<div class="user-account for-buy">
+					<a href="/my_account">
+					<i class="icon icon-user"></i>
+					</a>
+				</div>
+				<div class="cart for-buy">
+					<a href="/cart">
+					<i class="icon icon-account"></i>
+					</a>
+				</div>
+				<div class="logout">
+					<a href="/logout">
+						<i class="fa fa-sign-out-alt"></i>
+					</a>
+				</div>				
+
+			</div><!--right-element-->
+
+		</nav>
+
+	</div><!--header-wrap-->
+</header>
+
+<section id="intro" class="scrollspy-section swiper intro-swiper">
+	<div class="swiper-wrapper">
+
+		<div class="swiper-slide">
+			<div class="banner-content">
+				<h2 class="banner-title">Aloe there! Buy plants. At least they’ll look good in your Instagram <span class="text-pri">selfies</span>.</h2>
+			</div><!--banner-content--> 
+			<img src="static/images/main-banner.png" alt="banner">
+		</div><!--swiper-slide-->
+
+		<div class="swiper-slide">
+			<div class="banner-content">
+				<h2 class="banner-title">Buy a plant. Keep it alive. Congratulations, you're now more responsible than half the <span class="text-pri">population</span>.</h2>
+			</div><!--banner-content--> 
+			<img src="static/images/main-banner2.png" alt="banner">
+		</div><!--swiper-slide-->	
+
+		<div class="swiper-slide">
+			<div class="banner-content">
+				<h2 class="banner-title">Water them, love them, talk to them. But don’t expect them to text back <span class="text-pri">(Just like your crush)</span>.</h2>
+			</div><!--banner-content--> 
+			<img src="static/images/main-banner.png" alt="banner">
+		</div><!--swiper-slide-->		
+
+		<div class="swiper-slide">
+			<div class="banner-content">
+				<h2 class="banner-title">Let’s face it, your social life isn’t thriving. But your plants? They’re living their best <span class="text-pri">life</span>.</h2>
+			</div><!--banner-content--> 
+			<img src="static/images/main-banner2.png" alt="banner">
+		</div><!--swiper-slide-->		
+
+	</div><!--slider-->
+
+      <div class="swiper-pagination"></div>	
+</section>
+
+<button id="scroll-up"><i class="icon icon-arrow-up"></i></button>
+ 
+<section id="association" class="scrollspy-section bg-accent padding-large margin-xlarge">
+	<div class="container">
+		<div class="row">
+			<div class="association-content">
+				<img src="static/images/association-logo1.png" alt="association-logo">
+				<img src="static/images/association-logo2.png" alt="association-logo">
+				<img src="static/images/association-logo3.png" alt="association-logo">
+				<img src="static/images/association-logo4.png" alt="association-logo">
+				<img src="static/images/association-logo5.png" alt="association-logo">
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="why-us" class="scrollspy-section bg-accent padding-xlarge">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 left-column">
+				<div class="section-header">
+					<h2 class="section-title">Why shop with us?</h2>
+				</div>
+				<div class="expertize">
+					<p>At Leaf Village, we don’t just sell plants. We provide the kind of greenery that will make your living room look like you actually know how to care for something. Here’s why we’re the only plant shop you’ll ever need:</p>
+					<ul>
+						<li>
+							<span class="list-number">1.</span>
+							<div class="list-title">
+								<h4>Curated for You</h4>
+								<p>Whether you're a plant newbie or a self-proclaimed plant whisperer, we’ve got something for you. Plants for every level of expertise... or lack thereof.</p>
+							</div>
+						</li>
+						<li>
+							<span class="list-number">2.</span>
+							<div class="list-title">
+								<h4>Steps To Grow</h4>
+								<p>Don't worry, we’re here to make sure your plants survive your busy lifestyle. Our care guides are so easy, even your plants will be impressed.</p>
+							</div>
+						</li>
+						<li>
+							<span class="list-number">3.</span>
+							<div class="list-title">
+								<h4>Everything You Need</h4>
+								<p>From tools to fertilizers, we’re your one-stop shop for all things green. Because who doesn’t need more gadgets to pretend they’re a gardener?</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-md-6 right-column">
+				<figure class="single-image-holder">
+					<img src="static/images/plant-item15.png" alt="plant-image">
+				</figure>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="latest-blog" class="scrollspy-section margin-xlarge">
+	<div class="container">	
+		<div class="section-header">
+			<h2 class="section-title">Latest Blog Posts</h2>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				
+				<div class="post-grid">
+					<div class="row">
+						
+						<div class="col-md-4">
+							
+							<article class="post-item">
+
+								<figure>
+									<a href="/blog1" class="image-hvr-effect">
+										<img src="static/images/post-item15.jpg" alt="post" class="post-image">	
+									</a>
+								</figure>
+
+								<div class="post-content">			
+								    <h2 class="post-title">
+								    	<a href="/blog1">How to Create a Mini Jungle in Your Living Room</a>
+								    </h2>
+								    <p>Transform your home into a green paradise with this step-by-step guide to creating a lush indoor garden.</p>
+								</div>
+							</article>
+
+						</div>
+
+						<div class="col-md-4">
+
+							<article class="post-item">
+								<figure>
+									<a href="/blog2" class="image-hvr-effect">
+										<img src="static/images/post-item16.jpg" alt="post" class="post-image">
+									</a>
+								</figure>
+								<div class="post-content">				
+								    <h2 class="post-title">
+								    	<a href="/blog2">The Green Guide</a>
+								    </h2>
+								    <p>Starting your plant parenting journey? Discover the easiest indoor plants that thrive even if you forget to water them occasionally. Perfect for beginners!</p>
+								</div>
+							</article>
+						</div>
+
+						<div class="col-md-4">
+							<article class="post-item">
+								<figure>
+									<a href="/blog3" class="image-hvr-effect">
+										<img src="static/images/post-item17.jpg" alt="post" class="post-image">
+									</a>
+								</figure>
+								<div class="post-content">				
+								    <h2 class="post-title">
+								    	<a href="/blog3">The Secret Life Of Succulents</a>
+								    </h2>
+								    <p>Think succulents are indestructible? Think again. Learn how to keep these trendy plants healthy and thriving.</p>
+								</div>
+							</article>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<section id="testimonial" class="scrollspy-section margin-xlarge">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-6">				
+				<figure class="testimonial-image">
+					<img src="static/images/review-image.png" alt="review">
+				</figure>				
+			</div>
+
+			<div class="col-md-6">
+				<div class="swiper testimonial-slider">
+      				<div class="swiper-wrapper">
+
+						<div class="testimonial-item swiper-slide">
+							<div class="testimonials-inner">
+								<q>I love the biodegradable pots and eco-conscious packaging. Shopping here makes me feel like I’m helping the planet while sprucing up my home!</q>
+								<div class="testimonial-author">
+									<div class="author-detail">
+										<div class="name">Aditi M.</div>
+										<div class="author-title">By Customer</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="testimonial-item swiper-slide">
+							<div class="testimonials-inner">
+								<q>Their customer service is unmatched. When I had a question about watering, they responded quickly with expert advice. My plant babies are thriving!</q>
+								<div class="testimonial-author">
+									<div class="author-detail">
+										<div class="name">Sarah K.</div>
+										<div class="author-title">By Customer</div>
+									</div>
+								</div>
+							</div>
+						</div><!--testimonial-item-->
+
+						<div class="testimonial-item swiper-slide">
+							<div class="testimonials-inner">
+								<q>I thought I was buying a plant, but I got a whole vibe! Their decoration tips and fertilizers were a game-changer for my indoor garden.</q>
+								<div class="testimonial-author">
+									<div class="author-detail">
+										<div class="name">Emily W.</div>
+										<div class="author-title">By Customer</div>
+									</div>
+								</div>
+							</div>
+						</div><!--testimonial-item-->
+
+					</div>
+
+					<div class="button-container">
+						<div class="swiper-button-prev icon icon-arrow-left"></div>
+	      				<div class="swiper-button-next icon icon-arrow-right"></div>
+      				</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<section id="services">
+	<div class="container">
+		<div class="row">
+		
+			<div class="col-md-3">
+				<div class="services-item">
+					<i class="icon icon-shopping-cart"></i>
+					<div class="services-content">
+						<div class="services-title">Free Shipping</div> 
+                        <p>At any location</p>
+					</div>
+				</div>
+			</div>
+		
+			<div class="col-md-3">
+				<div class="services-item">
+					<i class="icon icon-secure"></i>
+					<div class="services-content">
+						<div class="services-title">Safe Payment</div> 
+                        <p>With our payment gateway</p>
+					</div>
+				</div>
+			</div>
+		
+			<div class="col-md-3">
+				<div class="services-item">
+					<i class="icon icon-guarantee"></i>
+					<div class="services-content">
+						<div class="services-title">Quality Guarantee</div> 
+                        <p>Fresh & Super item available</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="services-item">
+					<i class="icon icon-price-tag"></i>
+					<div class="services-content">
+						<div class="services-title">Big Offers</div> 
+                        <p>We give best offers surely</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<footer id="footer" class="bg-accent padding-xlarge">
+	<div class="container">
+		<div class="row">
+			
+			<div class="col-md-3 footer-intro">				
+				<div class="footer-menu">
+					<img src="static/images/logo.png" alt="logo" class="footer-logo">
+					<p>Our vision? To make sure everyone feels like they have a tiny forest inside their home. We believe that a greener world starts with one humble seed, and we’re here to make sure you can buy one—even if you have no idea how to keep it alive. Greenery for all, whether you're in a mansion or a closet-sized apartment.</p>				
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="footer-menu">
+					<h5>Company</h5>
+					<ul class="menu-list">
+						<li class="menu-item">
+							<a href="/about">About</a>
+						</li>
+						<li class="menu-item">
+							<a href="/our_plantation">Our Plantations</a>
+						</li>
+						<li class="menu-item">
+							<a href="/our_vision">Our vision</a>
+						</li>
+						<li class="menu-item">
+							<a href="/from_the_farmers">From the Farmers</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="footer-menu">
+					<h5>Support</h5>
+					<ul class="menu-list">
+						<li class="menu-item">
+							<a href="/customer_faqs">Customer FAQs</a>
+						</li>
+						<li class="menu-item">
+							<a href="/contact">Contact Us</a>
+						</li>
+						<li class="menu-item">
+							<a href="/privacy_policy">Privacy Policy</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="footer-menu">
+					<h5>Contact Us</h5>
+					<ul class="menu-list">
+						<li class="menu-item">
+							Leaf Village, 90045, Los Angeles, California, USA
+						</li>
+						<li class="menu-item">
+							+91 9427802388
+						</li>
+						<li class="menu-item">
+							<a href="leafvillageinfo@gmail.com" class="mail-id">leafvillageinfo@gmail.com.com</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</footer>
+
+<div id="footer-bottom" class="bg-accent padding-medium">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-12 footer-links">
+				<div class="copyright">
+					<p>© 2025 Leaf Village. All Rights Reserved
+						<a href="/privacy_policy">Privacy Policy</a>
+				</div>
+				<div class="social-links">
+					<p>Social Links:</p>
+					<ul>
+						<li><i class="icon icon-facebook"></i></li>
+						<li><i class="icon icon-twitter"></i></li>
+						<li><i class="icon icon-behance"></i></li>
+						<li><i class="icon icon-youtube-play"></i></li>
+						<li><i class="icon icon-pinterest"></i></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<script src="static/js/jquery-3.2.1.min.js"></script>
+<script src="static/js/bootstrap.bundle.min.js"></script>
+<script src="static/js/plugins.js"></script>
+
+<script src="static/js/ui-easing.js"></script>
+<script src="static/js/videopopup.js"></script>
+<script src="static/js/script.js"></script>
+
+
+	<script>
+		var scrollToTopBtn = document.getElementById("scroll-up");
+		var rootElement = document.documentElement;
+
+		function scrollToTop() {
+		  // Scroll to top logic
+		  rootElement.scrollTo({
+		    top: 0,
+		    behavior: "smooth"
+		  });
+		}
+		scrollToTopBtn.addEventListener("click", scrollToTop);
+	</script>
+
+</body>
+</html>

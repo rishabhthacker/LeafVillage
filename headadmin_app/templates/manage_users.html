@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users</title>
+    <style>
+        /* General Body Styling */
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1e3c72, #2a5298); /* Gradient background */
+    color: #fff;
+}
+
+/* Center Content */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* Headings */
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffdd57;
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffdd57;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #f4c10f;
+}
+
+/* Links */
+a {
+    color: #ffdd57;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Login Page Styling */
+.login-form {
+    width: 400px;
+    background: #1e3c72;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.login-form input[type="text"],
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background: #f0f0f0;
+    color: #333;
+}
+
+.login-form input::placeholder {
+    color: #999;
+}
+
+.login-form button {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Table Styling */
+.table-container {
+    width: 90%;
+    margin: auto;
+    background: #1e3c72;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+thead {
+    background: #ffdd57;
+    color: #333;
+}
+
+thead th {
+    padding: 10px;
+    font-size: 16px;
+    text-align: left;
+}
+
+tbody tr {
+    border-bottom: 1px solid #444;
+}
+
+tbody tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+tbody td {
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .login-form, .table-container {
+        width: 90%;
+    }
+
+    table {
+        font-size: 12px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <h2>All Users</h2>
+    <table border="1">
+        <tr>
+            <th>user_id</th>
+            <th>userame</th>
+            <th>email</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.user_id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/headadmin/dashboard">Back to Dashboard</a>
+</body>
+</html>

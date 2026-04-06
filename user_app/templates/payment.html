@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-nogqaZLGO8Bz7MI+NdTnruevyyEwWCL0hbKScAAgYrSAdmd/b39jU1qxa+5D0aDf" crossorigin="anonymous">
+    
+    <!-- Theme Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='icomoon/icomoon.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/vendor.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arapey&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Payment Page Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F6F7F2;
+    color: #333;
+}
+
+/* Header */
+header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #588456;
+            color: #fff;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        header .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        header a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            background-color: #588456;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        header a:hover {
+            background-color: #588456;
+        }
+
+h1, h2 {
+    color: #588456;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 20px 0;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin: 10px 0;
+}
+
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #F6F7F2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #F6F7F2;
+}
+
+th {
+    background-color: #588456;
+    color: #F6F7F2;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+td {
+    font-size: 0.9rem;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #F6F7F2;
+}
+
+tbody tr:hover {
+    background-color: #F6F7F2;
+    cursor: pointer;
+}
+
+/* Total Amount */
+h2:nth-of-type(2) {
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+/* Pay Now Button */
+button {
+    display: block;
+    margin: 30px auto;
+    padding: 15px 30px;
+    background-color: #588456;
+    color: #F6F7F2;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #588456;
+}
+
+button:active {
+    background-color: #588456;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+        font-size: 0.85rem;
+    }
+
+    button {
+        width: 90%;
+        font-size: 1rem;
+    }
+}
+
+        .fa-home, .fa-arrow-left {
+            margin-left: 8px;
+        }
+
+        .header .fa-home{
+            font-size: 24px;
+            gap: 20px;
+        }
+        .header .fa-arrow-left {
+            font-size: 24px; 
+            gap: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Payment Page</h1>
+
+     <!-- Header -->
+     <header>
+        <h1>My Cart</h1>
+        <div class="nav-links">
+            <!-- Previous Page -->
+            <a href="javascript:history.back()">
+                <i class="fas fa-arrow-left"></i> Previous
+            </a>
+
+            <!-- Home -->
+            <a href="/">
+                <i class="fas fa-home"></i> Home
+            </a>
+
+            <a href="/cart">
+                <i class="icon icon-account"></i>
+                Cart
+            </a>
+        </div>
+    </header>
+    
+    <!-- Display Products in Cart -->
+    <h2>Products You Are Purchasing:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price (₹)</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+                <tr>
+                    <td>{{ item.product_name }}</td>
+                    <td>{{ item.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Display Total Amount -->
+    <h2>Total Amount: ₹{{ total_price }}</h2>
+    
+    <!-- Pay Now Button -->
+    <button id="payNow">Pay Now</button>
+
+    <!-- Razorpay Script -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        document.getElementById("payNow").onclick = function () {
+            fetch("/payment", { method: "POST" })  // Send POST request to create order
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        alert("Error: " + data.error);
+                        return;
+                    }
+
+                    const options = {
+                        "key": "{{ razorpay_key_id }}",
+                        "amount": data.amount * 100,  // Convert to paise
+                        "currency": "INR",
+                        "order_id": data.order_id,
+                        "handler": function (response) {
+                            fetch(data.redirect_url, {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({
+                                    razorpay_payment_id: response.razorpay_payment_id,
+                                    razorpay_order_id: response.razorpay_order_id,
+                                    razorpay_signature: response.razorpay_signature
+                                })
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.redirect_url) {
+                                    window.location.href = data.redirect_url;
+                                } else {
+                                    alert("Payment verification failed!");
+                                }
+                            })
+                            .catch(error => console.error("Error:", error));
+                        },
+                        "theme": { "color": "#3399cc" }
+                    };
+
+                    const rzp = new Razorpay(options);
+                    rzp.open();
+                })
+                .catch(error => console.error("Error:", error));
+        };
+    </script>
+</body>
+</html>

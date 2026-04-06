@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Products</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Manage Products</h1>
+        
+        <!-- Add New Product Button (Replaced link with button) -->
+        <form action="{{ url_for('add_product') }}" method="get">
+            <button type="submit" class="btn btn-primary">Add New Product</button>
+        </form>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Category</th>
+                    <th>Subcategory</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.product_name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.stock_quantity }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.subcategory }}</td>
+                    <td>
+                        <!-- Edit and Delete buttons as links -->
+                        <form action="{{ url_for('update_product', product_id=product.product_id) }}" method="get" style="display:inline;">
+                            <button type="submit" class="btn btn-edit">Edit</button><br><br>
+                        </form>
+                        <form action="{{ url_for('delete_product', product_id=product.product_id) }}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-delete">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>
+</body>
+</html>

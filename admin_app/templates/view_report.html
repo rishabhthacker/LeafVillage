@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Report</title>
+</head>
+<body>
+    <h1>Report Details</h1>
+    <p><strong>Report Type:</strong> {{ report.report_type }}</p>
+    <p><strong>Description:</strong> {{ report.report_description }}</p>
+    <p><strong>Created At:</strong> {{ report.created_at }}</p>
+    <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
